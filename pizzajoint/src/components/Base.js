@@ -29,6 +29,25 @@ const containerVariants = {
         stiffness: 120
       }
     }
+    
+  }
+  const buttonVariants = {
+    /*  //left right moving
+    visible : {
+      x: [0, -20, 20, -20, 0],
+  transition: {delay: 2 }
+    }, */
+    hover: {
+      //keyframes moving btn
+      // scale: [1,1.1,1,1.1,1,1.1,1],
+      scale: 1.1,
+      textShadow: '0px 0px 8px rgb(255,255,255)',
+      boxShadow: '0px 0px 8px rgb(255,255,255)',
+      transition: {
+        duration: 0.3,
+        yoyo: Infinity
+      }
+    }
   }
 
 
@@ -66,11 +85,9 @@ const Base = ({ addBase, pizza }) => {
         >
           <Link to="/toppings">
             <motion.button
-             whileHover={{ 
-              scale: 1.1,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-             }}
+             variants={buttonVariants}
+             whileHover="hover"
+
 
             >Next</motion.button>
           </Link>
