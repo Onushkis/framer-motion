@@ -4,22 +4,44 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const backdrop = {
   visible: { opacity: 1 },
-  hidden: { opacity: 1 },
+  hidden: { opacity: 0 },
 }
 
+const modal = {
+  hidden: {
+    //is going to be in a top of the page
+    y: '-100vh',
+    // is not goit to be show to begin width:
+    opacity: 0,
+  },
+  visible: {
+    //brig the y to 200px down
+    y: '200px',
+    opacity: 1,
+    transition: { delay: 0.5 },
+  },
+}
 const Modal = ({ showModal, setShowModal }) => {
   return (
     <AnimatePresence exitBeforeEnter>
-      { showModal && ( 
-           <motion.div className="backdrop"
-           variants={backdrop}
-           initial='hidden'
-           animate='visible'
-           >
-           </motion.div>
-)}
-</AnimatePresence>
-)}
+      {showModal && (
+        <motion.div
+          className="backdrop"
+          variants={backdrop}
+          initial="hidden"
+          animate="visible"
+          exit='hidden'
+        >
+          <motion.div className="modal" variants={modal}>
+            <p>Want to make another pizza</p>
+            <Link to="/">
+              <button>Start Again</button>
+            </Link>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
 
-export default Modal;
-
+export default Modal
