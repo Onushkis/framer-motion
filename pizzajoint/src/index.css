@@ -147,4 +147,9 @@ li span.active::before{
   margin: 40px auto;
   border-radius: 50%;
   background: #fff;
+ 
+}
+
+.loaderTwo{
+  cursor: pointer;
 }
